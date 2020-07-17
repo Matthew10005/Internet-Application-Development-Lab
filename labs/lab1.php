@@ -9,6 +9,8 @@ if(isset($_POST['btn-save'])){
 	$City = $_POST['city_name'];
 	$username = $_POST['username'];
 	$password =$_POST['password'];
+	$utc_timestamp = $_POST['utc_timestamp'];
+	$offset = $_POST['time_zone_offset'];
 	$user = new User($first_name,$last_name,$City,$username,$password);
 	
 	if(!$user->validateForm()){
@@ -31,6 +33,9 @@ if(isset($_POST['btn-save'])){
 		<title> Lab 1 </title>
 		<script> type="text/javascript" src="validate.js" </script>
 		<link rel="stylesheet" type="text/css" href="validate.css">
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script type ="text/javascript" src= "timezone.js"></script>
 	</head>
 <body>
 	<form method = "post" name="user_details" id="user_details" onsubmit= "return validateForm()" action="<?=$_SERVER['PHP_SELF']?>">
@@ -64,6 +69,11 @@ if(isset($_POST['btn-save'])){
 			<tr>
 				<td><input type="password" name="password" placeholder="password"></td>
 			</tr>
+			<tr>
+				<td>Profile image:<input type="file" name="fileToUpload" id="fileToUpload"></td>
+			</tr>
+			<input type="hidden" name="utc_timestamp" id="utc_timestamp" value=""/>
+			<input type="hidden" name="time_zone_offset" id="time_zone_offset" value=""/>
 			<tr>
 				<td><button type="submit" name="btn-save"><strong>SAVE</strong></button></td>
 			</tr>

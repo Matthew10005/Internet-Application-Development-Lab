@@ -22,7 +22,7 @@ function __construct($first_name,$last_name,$city_name,$username,$password){
  	}
 
 public static function create (){
- 	$instance = new self();
+ 	$instance = new self($first_name,$last_name,$city_name,$username,$password);
  	return $instance;
  }
 
